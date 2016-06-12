@@ -20,7 +20,7 @@ def post_new(request):
         if form.is_valid():
             post = form.save(commit = False)
             post.autor = request.user
-            post.published_date = timezone.now()
+            # post.published_date = timezone.now() - Removed instant publish of post, now they are saved as draft's so i can choose which one to publish later
             post.save()
             return redirect('post_detail', pk=post.pk)
     else:
